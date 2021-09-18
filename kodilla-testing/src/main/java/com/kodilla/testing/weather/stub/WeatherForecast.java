@@ -32,3 +32,5 @@ public class WeatherForecast {
         return resultOfAverage;
     }
 }
+
+//test
