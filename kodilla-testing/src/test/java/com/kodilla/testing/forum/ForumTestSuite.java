@@ -50,6 +50,7 @@ class ForumTestSuite {
 
         //When
         String result = simpleUser.getUsername();
+
         //Then
         Assertions.assertEquals(expectedResult, result);
     }
