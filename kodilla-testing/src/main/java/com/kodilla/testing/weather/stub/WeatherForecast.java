@@ -1,10 +1,9 @@
 package com.kodilla.testing.weather.stub;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class WeatherForecast {
-    private Temperatures temperatures;
+    private final Temperatures temperatures;
 
     public WeatherForecast(Temperatures temperatures) {
         this.temperatures = temperatures;
@@ -31,6 +30,21 @@ public class WeatherForecast {
         }
         return resultOfAverage;
     }
-}
+    public double calculateMedianOfTemperature(Map<String, Double> temperatureMap) {
 
-//test
+        List<Double> listOfTemp = new ArrayList<>();
+        for (Map.Entry<String, Double> temperature : temperatureMap.entrySet()) {
+            listOfTemp.add(temperature.getValue());
+        }
+
+        Collections.sort(listOfTemp);
+        double median;
+
+        if (listOfTemp.size() % 2 == 0) {
+            median = (listOfTemp.get(listOfTemp.size() / 2) + listOfTemp.get(listOfTemp.size() / 2));
+        } else {
+            median = listOfTemp.get(listOfTemp.size() / 2);
+        }
+        return median;
+    }
+}

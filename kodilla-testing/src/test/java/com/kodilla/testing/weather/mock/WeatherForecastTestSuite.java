@@ -42,7 +42,26 @@ class WeatherForecastTestSuite {
     @DisplayName("Calculating average temperature - test")
     @Test
     void testCalculateAverageTemperature() {
+        //Given
+        WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
 
+        //When
+        double averageOfTemperature = weatherForecast.calculateAverageTemperature(temperaturesMock.getTemperatures());
+
+        //Then
+        Assertions.assertEquals(0, averageOfTemperature);
+    }
+    @DisplayName("Calculating median temperature - test")
+    @Test
+    void testCalculateMedianOfTemperature() {
+        //Given
+        WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
+
+        //When
+        double median = weatherForecast.calculateMedianOfTemperature(temperaturesMock.getTemperatures());
+
+        //Then
+        Assertions.assertEquals(25.5, median);
     }
 }
 
