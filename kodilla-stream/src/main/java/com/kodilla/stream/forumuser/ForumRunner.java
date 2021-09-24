@@ -17,5 +17,10 @@ public class ForumRunner {
                 .collect(Collectors.toMap(ForumUser::getUserID, forumUser -> forumUser));
 
         System.out.println("Mapped number of users: " + detailsOfForum.size());
+
+        detailsOfForum.entrySet().stream()
+                .map(integerForumUserEntry -> integerForumUserEntry.getKey() + ":" + integerForumUserEntry.getValue())
+                .forEach(System.out::println);
+
     }
 }

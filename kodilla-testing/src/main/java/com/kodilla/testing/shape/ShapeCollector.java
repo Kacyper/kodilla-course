@@ -23,7 +23,8 @@ public class ShapeCollector {
         }
 
     }
-    public void showFigures(){
-        System.out.println(shapeCollection.toString());
+
+    public List<Shape> getShapeCollection() {
+        return shapeCollection;
     }
 }

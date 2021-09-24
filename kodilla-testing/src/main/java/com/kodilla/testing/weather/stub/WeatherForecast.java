@@ -22,7 +22,7 @@ public class WeatherForecast {
         return resultMap;
     }
 
-    public double calculateAverageTemperature(Map<String, Double> temperatureMap) {
+    public double calculateAverageTemperature() {
 
         double resultOfAverage = 0;
         for (Double temperatures : temperatures.getTemperatures().values()) {
@@ -30,7 +30,7 @@ public class WeatherForecast {
         }
         return resultOfAverage;
     }
-    public double calculateMedianOfTemperature(Map<String, Double> temperatureMap) {
+    public double calculateMedianTemperature(Map<String, Double> temperatureMap) {
 
         List<Double> listOfTemp = new ArrayList<>();
         for (Map.Entry<String, Double> temperature : temperatureMap.entrySet()) {
@@ -40,9 +40,9 @@ public class WeatherForecast {
         Collections.sort(listOfTemp);
         double median;
 
-        if (listOfTemp.size() % 2 == 0) {
+        if (listOfTemp.size() % 2 == 0)
             median = (listOfTemp.get(listOfTemp.size() / 2) + listOfTemp.get(listOfTemp.size() / 2));
-        } else {
+        else {
             median = listOfTemp.get(listOfTemp.size() / 2);
         }
         return median;

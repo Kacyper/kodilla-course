@@ -2,7 +2,6 @@ package com.kodilla.testing.weather.mock;
 
 import com.kodilla.testing.weather.stub.Temperatures;
 import com.kodilla.testing.weather.stub.WeatherForecast;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,6 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -36,7 +36,7 @@ class WeatherForecastTestSuite {
         int quantityOfSensors = weatherForecast.calculateForecast().size();
 
         //Then
-        Assertions.assertEquals(5, quantityOfSensors);
+       assertEquals(5, quantityOfSensors);
     }
 
     @DisplayName("Calculating average temperature - test")
@@ -46,22 +46,23 @@ class WeatherForecastTestSuite {
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
 
         //When
-        double averageOfTemperature = weatherForecast.calculateAverageTemperature(temperaturesMock.getTemperatures());
+        double averageOfTemperature = weatherForecast.calculateAverageTemperature();
 
         //Then
-        Assertions.assertEquals(0, averageOfTemperature);
+        assertEquals(0, averageOfTemperature);
     }
+
     @DisplayName("Calculating median temperature - test")
     @Test
-    void testCalculateMedianOfTemperature() {
+    void testCalculateMedianTemperature() {
         //Given
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
 
         //When
-        double median = weatherForecast.calculateMedianOfTemperature(temperaturesMock.getTemperatures());
+        double median = weatherForecast.calculateMedianTemperature(temperaturesMock.getTemperatures());
 
         //Then
-        Assertions.assertEquals(25.5, median);
+        assertEquals(25.5, median);
     }
 }
 
