@@ -2,6 +2,7 @@ package com.kodilla.testing.weather.mock;
 
 import com.kodilla.testing.weather.stub.Temperatures;
 import com.kodilla.testing.weather.stub.WeatherForecast;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,16 +21,21 @@ class WeatherForecastTestSuite {
     @Mock
     private Temperatures temperaturesMock;
 
+    @BeforeEach
+    public void beforeEachTest() {
+        Map<String, Double> temperatureMap = new HashMap<>();
+        temperatureMap.put("Rzeszow", 25.5);
+        temperatureMap.put("Krakow", 26.2);
+        temperatureMap.put("Wroclaw", 24.8);
+        temperatureMap.put("Warszawa", 25.2);
+        temperatureMap.put("Gdansk", 26.1);
+
+        when(temperaturesMock.getTemperatures()).thenReturn(temperatureMap);
+    }
+
     @Test
     void testCalculateForecastWithMock() {
         //Given
-        Map<String, Double> temperaturesMap = new HashMap<>();
-        temperaturesMap.put("Rzeszow", 25.5);
-        temperaturesMap.put("Krakow", 26.2);
-        temperaturesMap.put("Wroclaw", 24.8);
-        temperaturesMap.put("Warszawa", 25.2);
-        temperaturesMap.put("Gdansk", 26.1);
-        when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
 
         //When
@@ -52,16 +58,16 @@ class WeatherForecastTestSuite {
         assertEquals(25.56, averageOfTemperature);
     }
 
-//    @DisplayName("Calculating median temperature - test")
-//    @Test
-//    void testCalculateMedianTemperature() {
-//        //Given
-//        WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
-//
-//        //When
-//        double median = weatherForecast.calculateMedianTemperature(temperaturesMock.getTemperatures());
-//
-//        //Then
-//        assertEquals(25.5, median);
-//    }
+    @DisplayName("Calculating median temperature - test")
+    @Test
+    void testCalculateMedianTemperature() {
+        //Given
+        WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
+
+        //When
+        double median = weatherForecast.calculateMedianTemperature(temperaturesMock.getTemperatures());
+
+        //Then
+        assertEquals(25.5, median);
+    }
 }
