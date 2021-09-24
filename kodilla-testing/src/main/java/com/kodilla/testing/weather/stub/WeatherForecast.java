@@ -22,29 +22,29 @@ public class WeatherForecast {
         return resultMap;
     }
 
-    public double calculateAverageTemperature(Map<String, Double> temperatureMap) {
+    public double calculateAverageTemperature(Map<String, Double> temperaturesMap) {
 
         double resultOfAverage = 0;
         for (Double temperatures : temperatures.getTemperatures().values()) {
             resultOfAverage += temperatures;
         }
-        return resultOfAverage % temperatureMap.size();
+        return resultOfAverage / temperaturesMap.size();
     }
-    public double calculateMedianTemperature(Map<String, Double> temperatureMap) {
-
-        List<Double> listOfTemp = new ArrayList<>();
-        for (Map.Entry<String, Double> temperature : temperatureMap.entrySet()) {
-            listOfTemp.add(temperature.getValue());
-        }
-
-        Collections.sort(listOfTemp);
-        double median;
-
-        if (listOfTemp.size() % 2 == 0)
-            median = (listOfTemp.get(listOfTemp.size() / 2) + listOfTemp.get(listOfTemp.size() / 2));
-        else {
-            median = listOfTemp.get(listOfTemp.size() / 2);
-        }
-        return median;
-    }
+//    public double calculateMedianTemperature(Map<String, Double> temperaturesMap) {
+//
+//        List<Double> listOfTemp = new ArrayList<>();
+//        for (Map.Entry<String, Double> temperature : temperaturesMap.entrySet()) {
+//            listOfTemp.add(temperature.getValue());
+//        }
+//
+//        Collections.sort(listOfTemp);
+//        double median;
+//
+//        if (listOfTemp.size() % 2 == 0)
+//            median = (listOfTemp.get(listOfTemp.size() / 2) + listOfTemp.get(listOfTemp.size() / 2));
+//        else {
+//            median = listOfTemp.get(listOfTemp.size() / 2);
+//        }
+//        return median;
+//    }
 }
