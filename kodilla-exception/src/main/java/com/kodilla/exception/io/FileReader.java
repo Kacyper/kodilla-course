@@ -17,7 +17,4 @@ public class FileReader {
             System.out.println("I am gonna be here... always!");
         }
     }
-
-    public void readFile() {
-    }
 }
