@@ -36,7 +36,7 @@ class WeatherForecastTestSuite {
         int quantityOfSensors = weatherForecast.calculateForecast().size();
 
         //Then
-       assertEquals(5, quantityOfSensors);
+        assertEquals(5, quantityOfSensors);
     }
 
     @DisplayName("Calculating average temperature - test")
@@ -46,10 +46,10 @@ class WeatherForecastTestSuite {
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
 
         //When
-        double averageOfTemperature = weatherForecast.calculateAverageTemperature();
+        double averageOfTemperature = weatherForecast.calculateAverageTemperature(temperaturesMock.getTemperatures());
 
         //Then
-        assertEquals(0, averageOfTemperature);
+        assertEquals(25.56, averageOfTemperature);
     }
 
     @DisplayName("Calculating median temperature - test")
@@ -65,4 +65,3 @@ class WeatherForecastTestSuite {
         assertEquals(25.5, median);
     }
 }
-

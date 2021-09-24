@@ -22,13 +22,13 @@ public class WeatherForecast {
         return resultMap;
     }
 
-    public double calculateAverageTemperature() {
+    public double calculateAverageTemperature(Map<String, Double> temperatureMap) {
 
         double resultOfAverage = 0;
         for (Double temperatures : temperatures.getTemperatures().values()) {
             resultOfAverage += temperatures;
         }
-        return resultOfAverage;
+        return resultOfAverage % temperatureMap.size();
     }
     public double calculateMedianTemperature(Map<String, Double> temperatureMap) {
 
