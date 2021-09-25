@@ -103,7 +103,7 @@ class BookDirectoryTestSuite {
         LibraryUser user = new LibraryUser("Kacper", "Ksykiewicz", "22122332123");
         when(libraryDatabaseMock.listBooksInHandsOf(user)).thenReturn(borrowedNoneBooks);
         //When
-        List<Book> borrowedBooksNone = bookLibrary.listBooksInHandsOf((LibraryDatabase) user);
+        List<Book> borrowedBooksNone = bookLibrary.listBooksInHandsOf(user);
         //Then
         assertEquals(0,borrowedBooksNone.size());
         }
@@ -116,7 +116,7 @@ class BookDirectoryTestSuite {
        LibraryUser user = new LibraryUser("Kacper", "Ksykiewicz", "22122332123");
        when(libraryDatabaseMock.listBooksInHandsOf(user)).thenReturn(borrowedBooksFirst);
        // When
-       List<Book> borrowedBooks1 = bookLibrary.listBooksInHandsOf((LibraryDatabase) user);
+       List<Book> borrowedBooks1 = bookLibrary.listBooksInHandsOf(user);
        // Then
        assertEquals(1, borrowedBooks1.size());
         }
@@ -128,7 +128,7 @@ class BookDirectoryTestSuite {
        LibraryUser user = new LibraryUser("Kacper", "Ksykiewicz", "22122332123");
        when(libraryDatabaseMock.listBooksInHandsOf(user)).thenReturn(borrowedBooksFive);
        // When
-       List<Book> borrowedBooks5 = bookLibrary.listBooksInHandsOf((LibraryDatabase) user);
+       List<Book> borrowedBooks5 = bookLibrary.listBooksInHandsOf(user);
        // Then
        assertEquals(5, borrowedBooks5.size());
         }
