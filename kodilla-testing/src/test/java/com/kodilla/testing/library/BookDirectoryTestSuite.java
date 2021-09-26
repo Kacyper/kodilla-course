@@ -122,6 +122,7 @@ class BookDirectoryTestSuite {
         }
    @Test
    void testListBooksInHandsOfFive() {
+        // Given
        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
        List<Book> borrowedBooksFive = generateListOfNBooks(5);
