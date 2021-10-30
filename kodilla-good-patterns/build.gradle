@@ -1,9 +1,10 @@
 plugins {
+    id 'java'
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.10'
 }
 
-group 'com.kodilla.blackjack'
+group 'com.kodilla'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -22,8 +23,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'com.kodilla.blackjack.blackjack'
-    mainClass = 'com.kodilla.blackjack.blackjack.HelloApplication'
+    mainModule = 'com.kodilla.kodillagoodpatterns'
+    mainClass = 'com.kodilla.kodillagoodpatterns.HelloApplication'
 }
 
 javafx {
