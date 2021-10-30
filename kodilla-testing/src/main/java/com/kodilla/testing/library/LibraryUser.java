@@ -1,8 +1,9 @@
 package com.kodilla.testing.library;
 
+import java.util.List;
 import java.util.Objects;
 
-public class LibraryUser {
+public class LibraryUser implements LibraryDatabase {
     String firstName;
     String lastName;
     String peselId;
@@ -48,5 +49,20 @@ public class LibraryUser {
     @Override
     public int hashCode() {
         return Objects.hash(firstName, lastName, peselId);
+    }
+
+    @Override
+    public List<Book> listBooksWithCondition(String titleFragment) {
+        return null;
+    }
+
+    @Override
+    public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
+        return null;
+    }
+
+    @Override
+    public boolean rentABook(LibraryUser libraryUser, Book book) {
+        return false;
     }
 }

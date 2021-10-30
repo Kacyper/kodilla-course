@@ -41,9 +41,9 @@ public class WeatherForecast {
         double median;
 
         if (listOfTemp.size() % 2.0 == 0)
-            median = (listOfTemp.get((int) (listOfTemp.size() / 2.0)) + listOfTemp.get((int) (listOfTemp.size() / 2.0)));
+            median = (listOfTemp.get((listOfTemp.size() / 2 - 1)) + listOfTemp.get((listOfTemp.size() / 2)));
         else {
-            median = listOfTemp.get((int) (listOfTemp.size() / 2.0));
+            median = listOfTemp.get((listOfTemp.size() / 2));
         }
         return median;
     }
