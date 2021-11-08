@@ -28,15 +28,8 @@ public class Search {
 
     public Set<Flight> searchVia(String destination, String arrival, String via) {
 
-        Set<Flight> searchResult = flightRespository.getFlights().stream()
+        return flightRespository.getFlights().stream()
                 .filter(f -> f.getDestination().equals(destination) && f.getArrival().equals(arrival) || (f.getDestination().equals(via) && f.getArrival().equals(arrival)))
                 .collect(Collectors.toSet());
-
-        if (searchResult.size() != 2) {
-            searchResult.clear();
         }
-        return  searchResult;
     }
-
-
-}
