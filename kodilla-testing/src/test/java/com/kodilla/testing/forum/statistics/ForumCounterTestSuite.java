@@ -37,7 +37,7 @@ public class ForumCounterTestSuite {
 
     @AfterEach
     public void afterTest() {
-        System.out.println("\n" +"Test ended.");
+        System.out.println("\n" +"Test has ended.");
     }
     @DisplayName("Posts number equals 0.")
     @Test
