@@ -16,8 +16,21 @@ import static org.mockito.Mockito.when;
 
 public class ForumCounterTestSuite {
 
+    private Statistics statisticsMock;
+    private ForumCounter forumCounter;
+
     @BeforeEach
     public void beforeTest() {
+        statisticsMock = mock(Statistics.class);
+        List<String> mockList = new ArrayList<>();
+        for (int i=0; i<20; i++){
+            mockList.add("User");
+        }
+        when(statisticsMock.usersNames()).thenReturn(mockList);
+        when(statisticsMock.postsCount()).thenReturn(30);
+        when(statisticsMock.commentsCount()).thenReturn(50);
+        forumCounter = new ForumCounter();
+
         System.out.println("Beginning of testing");
         System.out.println();
     }
@@ -30,13 +43,13 @@ public class ForumCounterTestSuite {
     @Test
     public void testCalculateAdvStatistics0Posts() {
         //Given
-        Statistics statisticsMock = mock(Statistics.class);
         when(statisticsMock.postsCount()).thenReturn(0);
-        ForumCounter forumCounter = new ForumCounter();
         //When
         forumCounter.calculateAdvStatistics(statisticsMock);
         //Then
         assertEquals(0, forumCounter.getPostsCounts());
+        assertEquals(0, forumCounter.getAvgUsersPerPosts());
+        assertEquals(0, forumCounter.getAvgCommentsPerPost());
         forumCounter.showStatistics();
     }
 
@@ -44,13 +57,13 @@ public class ForumCounterTestSuite {
     @Test
     public void testCalculateAdvStatistics1000Posts() {
         //Given
-        Statistics statisticsMock = mock(Statistics.class);
         when(statisticsMock.postsCount()).thenReturn(1000);
-        ForumCounter forumCounter = new ForumCounter();
         //When
         forumCounter.calculateAdvStatistics(statisticsMock);
         //Then
         assertEquals(1000, forumCounter.getPostsCounts());
+        assertEquals(50, forumCounter.getAvgUsersPerPosts());
+        assertEquals(0.05, forumCounter.getAvgCommentsPerPost());
         forumCounter.showStatistics();
     }
 
@@ -58,13 +71,13 @@ public class ForumCounterTestSuite {
     @Test
     public void testCalculateAdvStatistics0Comments() {
         //Given
-        Statistics statisticsMock = mock(Statistics.class);
         when(statisticsMock.commentsCount()).thenReturn(0);
-        ForumCounter forumCounter = new ForumCounter();
         //When
         forumCounter.calculateAdvStatistics(statisticsMock);
         //Then
         assertEquals(0, forumCounter.getCommentsCount());
+        assertEquals(0, forumCounter.getAvgCommentsPerUser());
+        assertEquals(0.0, forumCounter.getAvgCommentsPerPost());
         forumCounter.showStatistics();
     }
 
@@ -72,14 +85,16 @@ public class ForumCounterTestSuite {
     @Test
     public void testCalculateAdvStatisticsCommentsLowerPosts() {
         //Given
-        Statistics statisticsMock = mock(Statistics.class);
         when(statisticsMock.commentsCount()).thenReturn(4);
         when(statisticsMock.postsCount()).thenReturn(5);
-        ForumCounter forumCounter = new ForumCounter();
         //When
         forumCounter.calculateAdvStatistics(statisticsMock);
         //Then
-        assertTrue(forumCounter.getCommentsCount() < forumCounter.getPostsCounts());
+        assertEquals(4, forumCounter.getCommentsCount());
+        assertEquals(5, forumCounter.getPostsCounts());
+        assertEquals(0.25, forumCounter.getAvgUsersPerPosts());
+        assertEquals(0.2, forumCounter.getAvgCommentsPerUser());
+        assertEquals(0.8, forumCounter.getAvgCommentsPerPost());
         forumCounter.showStatistics();
     }
 
@@ -87,14 +102,15 @@ public class ForumCounterTestSuite {
     @Test
     public void testCalculateAdvStatisticsCommentsHigherPosts() {
         //Given
-        Statistics statisticsMock = mock(Statistics.class);
         when(statisticsMock.commentsCount()).thenReturn(7);
         when(statisticsMock.postsCount()).thenReturn(5);
-        ForumCounter forumCounter = new ForumCounter();
         //When
         forumCounter.calculateAdvStatistics(statisticsMock);
         //Then
         assertTrue(forumCounter.getCommentsCount() > forumCounter.getPostsCounts());
+        assertEquals(0.25, forumCounter.getAvgUsersPerPosts());
+        assertEquals(0.35, forumCounter.getAvgCommentsPerUser());
+        assertEquals(1.4, forumCounter.getAvgCommentsPerPost());
         forumCounter.showStatistics();
     }
 
@@ -102,29 +118,29 @@ public class ForumCounterTestSuite {
     @Test
     public void testCalculateAdvStatistics0Users() {
         //Given
-        List<String> list = new ArrayList<>();
-        Statistics statisticsMock = mock(Statistics.class);
-        when(statisticsMock.usersNames()).thenReturn(list);
-        ForumCounter forumCounter = new ForumCounter();
+        List<String> mockList = new ArrayList<>();
+        when(statisticsMock.usersNames()).thenReturn(mockList);
         //When
         forumCounter.calculateAdvStatistics(statisticsMock);
         //Then
         assertEquals(0, forumCounter.getUsersNumber());
+        assertEquals(0, forumCounter.getAvgUsersPerPosts());
+        assertEquals(0, forumCounter.getAvgCommentsPerPost());
         forumCounter.showStatistics();
     }
 
     @DisplayName("User number equals 100.")
     @Test
-    public void testCalculateAdvStatistics1000Users() {
+    public void testCalculateAdvStatistics100Users() {
         //Given
-        List<String> list = Arrays.asList(new String[100]);
-        Statistics statisticsMock = mock(Statistics.class);
-        when(statisticsMock.usersNames()).thenReturn(list);
-        ForumCounter forumCounter = new ForumCounter();
+        List<String> mockList = Arrays.asList(new String[100]);
+        when(statisticsMock.usersNames()).thenReturn(mockList);
         //When
         forumCounter.calculateAdvStatistics(statisticsMock);
         //Then
         assertEquals(100, forumCounter.getUsersNumber());
+        assertEquals(0.3, forumCounter.getAvgUsersPerPosts());
+        assertEquals(1.6666666666666667, forumCounter.getAvgCommentsPerPost());
         forumCounter.showStatistics();
     }
 

@@ -15,19 +15,19 @@ public class ForumCounter {
         commentsCount = statistics.commentsCount();
 
         if (statistics.postsCount() == 0 || statistics.usersNames().size() == 0) {
-            avgUsersPerPosts = 0;
+            avgUsersPerPosts = 0.0;
         } else {
             avgUsersPerPosts = (double) statistics.postsCount() / statistics.usersNames().size();
         }
         if (statistics.commentsCount() == 0 || statistics.usersNames().size() == 0) {
-            avgCommentsPerUser = 0;
+            avgCommentsPerUser = 0.0;
         } else {
             avgCommentsPerUser = (double) statistics.commentsCount() / statistics.usersNames().size();
         }
         if (statistics.commentsCount() == 0 || statistics.usersNames().size() == 0) {
-            avgCommentsPerPost = 0;
+            avgCommentsPerPost = 0.0;
         } else {
-            avgCommentsPerUser = (double) statistics.commentsCount() / statistics.postsCount();
+            avgCommentsPerPost = (double) statistics.commentsCount() / (double) statistics.postsCount();
         }
 
     }
