@@ -14,33 +14,33 @@ public class ForumCounter {
         postsCounts = statistics.postsCount();
         commentsCount = statistics.commentsCount();
 
-        if (statistics.postsCount() == 0 || statistics.usersNames().size() == 0) {
+        if (postsCounts == 0 || usersNumber == 0) {
             avgUsersPerPosts = 0.0;
         } else {
-            avgUsersPerPosts = (double) statistics.postsCount() / statistics.usersNames().size();
+            avgUsersPerPosts = (double) postsCounts / (double) usersNumber;
         }
-        if (statistics.commentsCount() == 0 || statistics.usersNames().size() == 0) {
+        if (commentsCount == 0 || usersNumber == 0) {
             avgCommentsPerUser = 0.0;
         } else {
-            avgCommentsPerUser = (double) statistics.commentsCount() / statistics.usersNames().size();
+            avgCommentsPerUser = (double) commentsCount / (double) usersNumber;
         }
-        if (statistics.commentsCount() == 0 || statistics.usersNames().size() == 0) {
+        if (commentsCount == 0 || postsCounts == 0) {
             avgCommentsPerPost = 0.0;
         } else {
-            avgCommentsPerPost = (double) statistics.commentsCount() / (double) statistics.postsCount();
+            avgCommentsPerPost = (double) commentsCount / (double) postsCounts;
         }
 
     }
 
-    public int getUsersNumber() {
+    public double getUsersNumber() {
         return usersNumber;
     }
 
-    public int getPostsCounts() {
+    public double getPostsCounts() {
         return postsCounts;
     }
 
-    public int getCommentsCount() {
+    public double getCommentsCount() {
         return commentsCount;
     }
 

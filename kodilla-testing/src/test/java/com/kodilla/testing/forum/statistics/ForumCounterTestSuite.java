@@ -47,6 +47,10 @@ public class ForumCounterTestSuite {
         //When
         forumCounter.calculateAdvStatistics(statisticsMock);
         //Then
+        // dopisać jeszcze pozostałe 3 pola z forum counter
+        assertEquals(20,forumCounter.getUsersNumber());
+        assertEquals(0,forumCounter.getPostsCounts());
+        assertEquals(50.0, forumCounter.getCommentsCount());
         assertEquals(0, forumCounter.getPostsCounts());
         assertEquals(0, forumCounter.getAvgUsersPerPosts());
         assertEquals(0, forumCounter.getAvgCommentsPerPost());
@@ -61,6 +65,9 @@ public class ForumCounterTestSuite {
         //When
         forumCounter.calculateAdvStatistics(statisticsMock);
         //Then
+        assertEquals(20,forumCounter.getUsersNumber());
+        assertEquals(1000,forumCounter.getPostsCounts());
+        assertEquals(50.0, forumCounter.getCommentsCount());
         assertEquals(1000, forumCounter.getPostsCounts());
         assertEquals(50, forumCounter.getAvgUsersPerPosts());
         assertEquals(0.05, forumCounter.getAvgCommentsPerPost());
@@ -90,6 +97,7 @@ public class ForumCounterTestSuite {
         //When
         forumCounter.calculateAdvStatistics(statisticsMock);
         //Then
+        assertEquals(20,forumCounter.getUsersNumber());
         assertEquals(4, forumCounter.getCommentsCount());
         assertEquals(5, forumCounter.getPostsCounts());
         assertEquals(0.25, forumCounter.getAvgUsersPerPosts());
@@ -108,6 +116,9 @@ public class ForumCounterTestSuite {
         forumCounter.calculateAdvStatistics(statisticsMock);
         //Then
         assertTrue(forumCounter.getCommentsCount() > forumCounter.getPostsCounts());
+        assertEquals(20,forumCounter.getUsersNumber());
+        assertEquals(7, forumCounter.getCommentsCount());
+        assertEquals(5, forumCounter.getPostsCounts());
         assertEquals(0.25, forumCounter.getAvgUsersPerPosts());
         assertEquals(0.35, forumCounter.getAvgCommentsPerUser());
         assertEquals(1.4, forumCounter.getAvgCommentsPerPost());
@@ -123,9 +134,12 @@ public class ForumCounterTestSuite {
         //When
         forumCounter.calculateAdvStatistics(statisticsMock);
         //Then
+        assertEquals(50, forumCounter.getCommentsCount());
+        assertEquals(30, forumCounter.getPostsCounts());
         assertEquals(0, forumCounter.getUsersNumber());
         assertEquals(0, forumCounter.getAvgUsersPerPosts());
-        assertEquals(0, forumCounter.getAvgCommentsPerPost());
+        assertEquals(0, forumCounter.getAvgCommentsPerUser());
+        assertEquals(1.6666666666666667, forumCounter.getAvgCommentsPerPost());
         forumCounter.showStatistics();
     }
 
@@ -138,6 +152,9 @@ public class ForumCounterTestSuite {
         //When
         forumCounter.calculateAdvStatistics(statisticsMock);
         //Then
+        assertEquals(100, forumCounter.getUsersNumber());
+        assertEquals(30, forumCounter.getPostsCounts());
+        assertEquals(50.0, forumCounter.getCommentsCount());
         assertEquals(100, forumCounter.getUsersNumber());
         assertEquals(0.3, forumCounter.getAvgUsersPerPosts());
         assertEquals(1.6666666666666667, forumCounter.getAvgCommentsPerPost());
