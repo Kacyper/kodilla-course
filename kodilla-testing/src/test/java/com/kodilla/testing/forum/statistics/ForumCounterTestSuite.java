@@ -47,7 +47,6 @@ public class ForumCounterTestSuite {
         //When
         forumCounter.calculateAdvStatistics(statisticsMock);
         //Then
-        // dopisać jeszcze pozostałe 3 pola z forum counter
         assertEquals(20,forumCounter.getUsersNumber());
         assertEquals(0,forumCounter.getPostsCounts());
         assertEquals(50.0, forumCounter.getCommentsCount());
