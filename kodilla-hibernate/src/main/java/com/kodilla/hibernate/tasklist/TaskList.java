@@ -17,14 +17,14 @@ class TaskList {
     private String description;
     private List<Task> tasks = new ArrayList<>();
 
-
-    public TaskList() {
-    }
     public TaskList (String listName, String description) {
         this.listName = listName;
         this.description = description;
-
 }
+
+    public TaskList() {
+    }
+
     @Id
     @GeneratedValue
     @NotNull

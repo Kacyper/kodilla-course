@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @SpringBootTest
-public class InvoiceDaoTestSuite {
+public class InvoiceDaoTest {
 
     @Autowired
     private ProductDao productDao;
@@ -54,13 +54,18 @@ public class InvoiceDaoTestSuite {
         //When
         int invoiceOne = invoice1.getId();
         int invoiceTwo = invoice2.getId();
+        int invoiceCountOne = itemDao.countByInvoice(invoice1);
+        int invoiceCountTwo = itemDao.countByInvoice(invoice2);
+
 
 
         //Then
         assertNotEquals(0, invoiceOne);
         assertNotEquals(0L, invoiceTwo);
-        assertEquals(70, invoiceOne);
-        assertEquals(3000, invoiceTwo);
+        assertEquals(3, invoiceCountOne);
+        assertEquals(1, invoiceCountTwo);
+
+
 
         //CleanUp
         try {

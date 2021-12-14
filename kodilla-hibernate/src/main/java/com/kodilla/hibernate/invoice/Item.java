@@ -16,7 +16,7 @@ public class Item {
     private BigDecimal value;
     private Invoice invoice;
 
-    public Item(Product product1, BigDecimal bigDecimal, int i) {
+    public Item() {
 
     }
 

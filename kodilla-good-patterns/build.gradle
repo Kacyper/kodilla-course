@@ -18,9 +18,6 @@ ext {
 sourceCompatibility = '16'
 targetCompatibility = '16'
 
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
 
 application {
     mainModule = 'com.kodilla.kodillagoodpatterns'

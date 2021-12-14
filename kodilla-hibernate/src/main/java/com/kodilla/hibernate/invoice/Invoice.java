@@ -44,7 +44,7 @@ public class Invoice {
     }
     @OneToMany(
         targetEntity = Item.class,
-        mappedBy = "prodcut",
+        mappedBy = "product",
         cascade = CascadeType.ALL,
         fetch = FetchType.LAZY
 )
