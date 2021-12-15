@@ -21,7 +21,10 @@ class CompanyDaoTest {
     private TaskDao taskDao;
     private static final String DESCRIPTION = "Test: Learn Hibernate";
     private static final String TODO = "Test: To do";
+
+    @Autowired
     private TaskListDao taskListDao;
+
 
     @Test
     void testTaskDaoSave() {
@@ -78,7 +81,7 @@ class CompanyDaoTest {
         Task task1 = new Task("Test: Study Hibernate", 3);
         Task task2 = new Task("Test: Practice Named Queries", 6);
         Task task3 = new Task("Test: Study native queries", 7);
-        Task task4 = new Task("Test: Make some tests", 13);
+        Task task4 = new Task("Test: Makse some tests", 13);
 
         TaskFinancialDetails tfd1 = new TaskFinancialDetails(new BigDecimal(5), false);
         TaskFinancialDetails tfd2 = new TaskFinancialDetails(new BigDecimal(10), false);
@@ -118,4 +121,5 @@ class CompanyDaoTest {
             //CleanUp
             taskListDao.deleteById(id);
         }
-    }}
+    }
+}
