@@ -11,6 +11,11 @@ import java.util.List;
         resultClass = Company.class
 )
 
+@org.hibernate.annotations.NamedQuery(
+        name = "Company.retrieveCompaniesByNamePart",
+        query = "FROM Company WHERE name LIKE :fragment"
+)
+
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
