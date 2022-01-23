@@ -1,7 +1,6 @@
 package com.kodilla.patterns2.adapter.bookclasifier;
 
-import com.kodilla.patterns2.adapter.bookclasifier.libraryb.Book;
-import com.kodilla.patterns2.adapter.bookclasifier.MedianAdapter;
+import com.kodilla.patterns2.adapter.bookclasifier.librarya.Book;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -9,19 +8,19 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MedianAdapterTestSuite {
+public class MedianAdapterTestSuites {
     @Test
     public void publicationYearMedianTest() {
         //Given
         MedianAdapter medianAdapter = new MedianAdapter();
-        Set<com.kodilla.patterns2.adapter.bookclasifier.librarya.Book> bookA = new HashSet<>();
+        Set<Book> bookA = new HashSet<>();
 
 
-        bookA.add(new Book("Mike", "Bike", 2020));
-        bookA.add(new Book("Like", "Dike", 2010));
-        bookA.add(new Book("Keep", "Mic", 2013));
-        bookA.add(new Book("Take", "Kite", 2220));
-        bookA.add(new Book("Fly", "High", 2420));
+        bookA.add(new Book("Mike Bike", "Bike", 2020, "4es"));
+        bookA.add(new Book("Like That", "Dike", 2010, "8ty"));
+        bookA.add(new Book("Keep On", "Mic", 2013, "7y"));
+        bookA.add(new Book("Take Me", "Kite", 2220, "kl"));
+        bookA.add(new Book("Fly In", "High", 2420, "ok"));
 
         //When
         int median = medianAdapter.publicationYearMedian(bookA);
