@@ -13,7 +13,7 @@ import java.util.List;
 
 @org.hibernate.annotations.NamedQuery(
         name = "Company.retrieveCompaniesByNamePart",
-        query = "FROM Company WHERE name LIKE :fragment"
+        query = "FROM Company WHERE name LIKE CONCAT ('%', :ARG,'%')"
 )
 
 @Entity

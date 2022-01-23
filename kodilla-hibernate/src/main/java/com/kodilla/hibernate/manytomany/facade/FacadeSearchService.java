@@ -20,13 +20,11 @@ public class FacadeSearchService {
         this.companyDao = companyDao;
     }
 
-    public List<Company> searchCompaniesByNamePart(String fragment) {
-        fragment = "%" + fragment + "%";
-        return companyDao.retrieveCompaniesByNamePart(fragment);
+    public List<Company> searchCompaniesByNamePart(String name) {
+        return companyDao.retrieveCompaniesByNamePart(name);
     }
 
-    public List<Employee> searchEmployeeByNamePart(String fragment) {
-        fragment = "%" + fragment + "%";
-        return employeeDao.retrieveEmployeeByNamePart(fragment);
+    public List<Employee> searchEmployeeByNamePart(String name) {
+        return employeeDao.retrieveEmployeeByNamePart(name);
     }
 }
